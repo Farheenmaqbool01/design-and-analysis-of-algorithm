@@ -1,0 +1,38 @@
+#include <stdio.h>  
+int binarySearch(int a[], int lb, int ub, int item)    
+{    
+    int mid;    
+    if(lb<ub)     
+    {        mid = (lb + ub)/2;    
+ 
+        if(a[mid] == item)    
+        {                 
+            return mid;    
+        }    
+        else if(a[mid] < item)     
+        {  
+            return binarySearch(a, mid+1, ub, item);    
+        }    
+          
+        else     
+        {  
+            return binarySearch(a, lb, mid-1, item);    
+        }          
+    }    
+    return -1;     
+}   
+int main() {  
+  int a[] = {11, 14, 25, 30, 40, 41, 52, 57, 70}; // given array  
+  int item = 40; // value to be searched  
+  int n = sizeof(a) / sizeof(a[0]);
+  int res = binarySearch(a, 0, n-1, item);
+  printf("The elements of the array are - ");  
+  for (int i = 0; i < n; i++)  
+  printf("%d ", a[i]);   
+  printf("\nElement to be searched is - %d", item);  
+  if (res == -1)  
+  printf("\nElement is not present in the array");  
+  else  
+  printf("\nElement is present at %d position of array", res);  
+  return 0;  
+}  
